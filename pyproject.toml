@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "airbnb-pricing"
+version = "0.1.0"
+description = "A tool to find hotel prices using Google Gemini API"
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+python-dotenv = "^1.0.0"
+google-genai = "^1.4.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.9.9"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+hotel-prices = "src.hotel_price_finder:main"
