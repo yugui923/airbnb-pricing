@@ -2,8 +2,7 @@
 name = "airbnb-pricing"
 version = "0.1.0"
 description = "A tool to find hotel prices using Google Gemini API"
-readme = "README.md"
-packages = [{include = "src"}]
+packages = [{include = "comparable_pricing"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"

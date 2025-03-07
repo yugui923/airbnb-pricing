@@ -4,29 +4,23 @@ An application that finds hotel prices using Google's Gemini AI API.
 
 ## Project Structure
 
-- `comparable_pricing/` - Python backend code
-- `backend/` - Flask API server
+- `backend/` - Flask API server and backend logics
 - `frontend/` - React frontend application
 
 ## Setup Instructions
 
 ### Backend Setup
 
-1. Install the required Python packages:
-
-   ```
-   poetry install
-   ```
-
-2. Create a `.env` file in the project root with your Google API key:
+1. Create a `.env` file in the project root with your Google API key:
 
    ```
    GOOGLE_API_KEY=your_api_key_here
    ```
 
-3. Start the Flask API server:
+2. Install and start the Flask API server:
    ```
    cd backend
+   poetry install
    python app.py
    ```
 
