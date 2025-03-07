@@ -9,6 +9,7 @@ packages = [{include = "src"}]
 python = "^3.12"
 python-dotenv = "^1.0.0"
 google-genai = "^1.4.0"
+pydantic = "^2.10.6"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.9.9"

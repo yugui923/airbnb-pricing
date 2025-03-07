@@ -2,8 +2,19 @@ import os
 import argparse
 from datetime import datetime
 
-from google import genai
 from dotenv import load_dotenv
+from pydantic import BaseModel
+from google import genai
+
+
+class HotelPrice(BaseModel):
+    hotel_name: str
+    price_low_range: float
+    price_high_range: float
+    star_rating: int
+    amenities: list[str]
+    description: str
+
 
 # Load environment variables from .env file
 load_dotenv()
@@ -37,7 +48,12 @@ def get_hotel_prices(zip_code, check_in_date, check_out_date):
 
     try:
         response = client.models.generate_content(
-            model="gemini-2.0-flash", contents=prompt
+            model="gemini-2.0-flash",
+            contents=prompt,
+            config={
+                "response_mime_type": "application/json",
+                "response_schema": list[HotelPrice],
+            },
         )
         return response.text
     except Exception as e:
@@ -48,7 +64,9 @@ def main():
     parser = argparse.ArgumentParser(
         description="Get hotel prices for a ZIP code and date range"
     )
-    parser.add_argument("--zip", required=True, help="ZIP code to search for hotels")
+    parser.add_argument(
+        "--zip", required=True, help="ZIP code to search for hotels"
+    )
     parser.add_argument(
         "--check-in",
         required=True,
