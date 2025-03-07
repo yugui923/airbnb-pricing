@@ -7,13 +7,19 @@ from pydantic import BaseModel
 from google import genai
 
 
+class DailyPrice(BaseModel):
+    daily_price_low: float
+    daily_price_high: float
+
+
 class HotelPrice(BaseModel):
     hotel_name: str
-    price_low_range: float
-    price_high_range: float
+    zip_code: str
+    daily_price_list: list[DailyPrice]
     star_rating: int
     amenities: list[str]
     description: str
+    source_url: str
 
 
 # Load environment variables from .env file
@@ -35,15 +41,18 @@ def get_hotel_prices(zip_code, check_in_date, check_out_date):
     """Query hotel prices using Google Gemini API"""
 
     prompt = f"""
-    I need information about hotels in the ZIP code {zip_code} for a stay from {check_in_date} to {check_out_date}.
+    Gather information about hotels in the ZIP code {zip_code} for a stay from {check_in_date} to {check_out_date}.
     
     For each hotel, please provide:
-    1. Hotel name
-    2. Approximate price range for the specified dates
-    3. Star rating
-    4. Brief description or notable amenities
+    * Hotel name
+    * Zip code
+    * List of daily prices
+    * Star rating
+    * List of amenities
+    * Brief description within 50 words
+    * URL of source website
     
-    Format the results in a clear, organized way. List at least 5 hotels if available.
+    List at least 5 hotels and at most 10 hotels. If there are fewer than 5 hotels in this ZIP code, provide information for adjacent ZIP codes as well.
     """
 
     try:

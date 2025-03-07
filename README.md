@@ -11,5 +11,5 @@ poetry install
 ## Usage
 
 ```bash
-poetry run hotel-prices --zip 84070 --check-in 2025-03-01 --check-out 2025-03-02
+poetry run hotel-prices --zip 84070 --check-in 2025-05-01 --check-out 2025-05-15
 ```
