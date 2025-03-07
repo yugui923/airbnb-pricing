@@ -10,6 +10,8 @@ python = "^3.12"
 python-dotenv = "^1.0.0"
 google-genai = "^1.4.0"
 pydantic = "^2.10.6"
+flask = "^3.1.0"
+flask-cors = "^5.0.1"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.9.9"
@@ -19,4 +21,4 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-hotel-prices = "src.hotel_price_finder:main"
+hotel-prices = "comparable_pricing.hotel_price_finder:main"

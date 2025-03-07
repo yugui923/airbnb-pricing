@@ -1,0 +1,30 @@
+.hotel-list {
+  margin-top: 20px;
+}
+
+.hotel-list h2 {
+  margin-bottom: 20px;
+  color: #003366;
+}
+
+.hotel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.no-results {
+  text-align: center;
+  padding: 30px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  color: #666;
+  font-size: 18px;
+}
+
+@media (max-width: 600px) {
+  .hotel-grid {
+    grid-template-columns: 1fr;
+  }
+}
